@@ -23,6 +23,12 @@
                 <img src="../assets/images/img12.jpg" alt="img12" class="thumb" data-index="12">
                 <img src="../assets/images/img1.jpg" alt="img1" class="thumb" data-index="13">
                 <img src="../assets/images/img14.jpg" alt="img14" class="thumb" data-index="14">
+                <img src="../assets/images/img15.jpg" alt="img15" class="thumb" data-index="15">
+                <img src="../assets/images/img16.jpg" alt="img16" class="thumb" data-index="16">
+                <img src="../assets/images/img17.jpg" alt="img17" class="thumb" data-index="17">
+                <img src="../assets/images/img18.jpg" alt="img18" class="thumb" data-index="18">
+                <img src="../assets/images/img19.jpg" alt="img19" class="thumb" data-index="19">
+                <img src="../assets/images/img20.jpg" alt="img20" class="thumb" data-index="20">
             </div>
         </div>
       
@@ -91,7 +97,7 @@ import Spinner from '../components/Spinner.vue'
                         leastScroll.value = false
                     }
 
-                    if(Number(target.dataset.index) >= 14){
+                    if(Number(target.dataset.index) >= 20){
                         maxScroll.value = true
                         console.log('end of the next line')
                     } else {
