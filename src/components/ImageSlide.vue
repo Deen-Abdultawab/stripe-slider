@@ -80,6 +80,11 @@ import Spinner from '../components/Spinner.vue'
             function setActive(e){
                 let target = e.target
                 let idx
+
+                if(target.classList.contains('active')){
+                    return
+                }
+
                 if(target.classList.contains('thumb')){
                     imageList.value.forEach((img, index)=>{
                         if(img.classList.contains('active')){
@@ -210,14 +215,14 @@ import Spinner from '../components/Spinner.vue'
         object-fit: cover;
         display: block;
         border-radius: 0.2rem;
-        transition: all 1s linear;
+        transition: all 0.9s linear;
         cursor: pointer;
     }
 
    
     .thumb:hover {
         width: 160px;
-        box-shadow: 0px 10px 20px 5px #6772E5;
+        box-shadow: inset 10px 20px 5px #6772E5;
     }
 
 
