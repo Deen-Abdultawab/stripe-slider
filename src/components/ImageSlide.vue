@@ -9,26 +9,70 @@
         </div>
         <div class="slide-image-container">
             <div class="slide-images" ref="slideImages" @click="setActive">
-                <img src="../assets/images/img1.jpg" alt="img1" class="thumb" data-index="1">
-                <img src="../assets/images/img2.jpg" alt="img2" class="thumb" data-index="2">
-                <img src="../assets/images/img3.jpg" alt="img3" class="thumb" data-index="3">
-                <img src="../assets/images/img4.jpg" alt="img4" class="thumb" data-index="4">
-                <img src="../assets/images/img5.jpg" alt="img5" class="thumb" data-index="5">
-                <img src="../assets/images/img6.jpg" alt="img6" class="thumb" data-index="6">
-                <img src="../assets/images/img7.jpg" alt="img7" class="active thumb" data-index="7">
-                <img src="../assets/images/img8.jpg" alt="img8" class="thumb" data-index="8">
-                <img src="../assets/images/img9.jpg" alt="img9" class="thumb" data-index="9">
-                <img src="../assets/images/img10.jpg" alt="img10" class="thumb" data-index="10">
-                <img src="../assets/images/img11.jpg" alt="img11" class="thumb" data-index="11">
-                <img src="../assets/images/img12.jpg" alt="img12" class="thumb" data-index="12">
-                <img src="../assets/images/img1.jpg" alt="img1" class="thumb" data-index="13">
-                <img src="../assets/images/img14.jpg" alt="img14" class="thumb" data-index="14">
-                <img src="../assets/images/img15.jpg" alt="img15" class="thumb" data-index="15">
-                <img src="../assets/images/img16.jpg" alt="img16" class="thumb" data-index="16">
-                <img src="../assets/images/img17.jpg" alt="img17" class="thumb" data-index="17">
-                <img src="../assets/images/img18.jpg" alt="img18" class="thumb" data-index="18">
-                <img src="../assets/images/img19.jpg" alt="img19" class="thumb" data-index="19">
-                <img src="../assets/images/img20.jpg" alt="img20" class="thumb" data-index="20">
+            <div class="thumb">
+                <div class="info">
+                    <h1 class="title">president and cofounder, stripe</h1>
+                    <h3 class="name">John Collison</h3>
+                </div>
+                <img src="../assets/images/image1.jpg" alt="img1" data-index="1">
+            </div>
+            <div class="thumb">
+                <div class="info">
+                    <h1 class="title">Chief financial officer and executive vice president for global finance, aon plc.</h1>
+                    <h3 class="name">Christa Davis</h3>
+                </div>
+                <img src="../assets/images/image2.jpg" alt="img2" data-index="2">
+            </div>
+            <div class="thumb">
+                <div class="info">
+                    <h1 class="title">head of product marketing, stripe</h1>
+                    <h3 class="name">Tanya Khakbaz</h3>
+                </div>
+                <img src="../assets/images/image3.jpg" alt="img3" data-index="3">
+            </div>
+            <div class="thumb">
+                <div class="info">
+                    <h1 class="title">revenue and financial management, stripe</h1>
+                    <h3 class="name">Vivek Sharma</h3>
+                </div>
+                <img src="../assets/images/image4.jpg" alt="img4"  data-index="4">
+            </div>
+            <div class="thumb active showText">
+                <div class="info">
+                    <h1 class="title">Founder, pulley</h1>
+                    <h3 class="name">Yin Wu</h3>
+                </div>
+                <img src="../assets/images/image5.jpg" alt="img5"  data-index="5">
+            </div>
+            <div class="thumb">
+                <div class="info">
+                    <h1 class="title">ceo and cofounder, stripe</h1>
+                    <h3 class="name">Patrick Collison</h3>
+                </div>
+                <img src="../assets/images/image6.jpg" alt="img6"  data-index="6">
+            </div>
+            <div class="thumb">
+                <div class="info">
+                    <h1 class="title">president, product and business, stripe</h1>
+                    <h3 class="name">Will Gaybrick</h3>
+                </div>
+                <img src="../assets/images/image7.jpg" alt="img7"  data-index="7">
+            </div>
+            <div class="thumb">
+                <div class="info">
+                    <h1 class="title">head of global sales, stripe.</h1>
+                    <h3 class="name">Eileen O'Mara</h3>
+                </div>
+                <img src="../assets/images/image8.jpg" alt="img8"  data-index="8">
+            </div>
+            <div class="thumb">
+                <div class="info">
+                    <h1 class="title">ceo, openai</h1>
+                    <h3 class="name">Sam Altman</h3>
+                </div>
+                <img src="../assets/images/image9.jpg" alt="img9"  data-index="9">
+            </div>
+                
             </div>
         </div>
       
@@ -47,7 +91,6 @@ import Spinner from '../components/Spinner.vue'
             const spinner = ref(null)
             const mainContainer = ref(null)
             let activeImage
-            let containerWidth
             let maxScroll = ref(false)
             let leastScroll = ref(false)
             
@@ -62,15 +105,16 @@ import Spinner from '../components/Spinner.vue'
 
                 console.log(activeImage.scrollWidth)
                 
-                setTimeout(() => {                  
+                setTimeout(() => {   
                     imageList.value = [...slideImages.value.children]
-                    activeImage =  imageList.value.find(image => image.classList.contains('active'))
-                    containerWidth = slideImages.value.offsetWidth / 3
+                    activeImage =  imageList.value.find(image => image.classList.contains('active'))               
+                
                     if(activeImage.scrollWidth === 400){
-                     spinner.value.classList.add('hide-spinner')
-                    mainContainer.value.classList.remove('hide-images')
-                     slideImages.value.scrollLeft = activeImage.scrollWidth + containerWidth
+                        spinner.value.classList.add('hide-spinner')
+                       mainContainer.value.classList.remove('hide-images')
+                        slideImages.value.scrollLeft = activeImage.scrollWidth
                     }
+                    
                 }, 1500);
                 
                 
@@ -79,13 +123,14 @@ import Spinner from '../components/Spinner.vue'
 
             function setActive(e){
                 let target = e.target
+                let targetParent = target.parentElement
                 let idx
 
-                if(target.classList.contains('active')){
+                if(targetParent.classList.contains('active')){
                     return
                 }
 
-                if(target.classList.contains('thumb')){
+                if(targetParent.classList.contains('thumb')){
                     imageList.value.forEach((img, index)=>{
                         if(img.classList.contains('active')){
                             idx = index
@@ -93,23 +138,25 @@ import Spinner from '../components/Spinner.vue'
                         img.classList.remove('active')
                     })
 
-                    
-                    target.classList.add('active')
+                    setTimeout(()=>{
+                        targetParent.classList.add('active')
+                        console.log('witdh is ', targetParent.scrollWidth)
+                    }, 150)
 
-                    if(Number(target.dataset.index) <= 0){
+                    if(Number(target.dataset.index) <= 1){
                         leastScroll.value = true
                     } else {
                         leastScroll.value = false
                     }
 
-                    if(Number(target.dataset.index) >= 20){
+                    if(Number(target.dataset.index) >= 9){
                         maxScroll.value = true
                         console.log('end of the next line')
                     } else {
                         maxScroll.value = false
                     }
 
-                    slideImages.value.scrollLeft += idx < Number(target.dataset.index)? target.scrollWidth : -target.scrollWidth
+                    slideImages.value.scrollLeft += idx < Number(target.dataset.index)? targetParent.scrollWidth : -targetParent.scrollWidth
                     
 
                 } 
@@ -120,8 +167,10 @@ import Spinner from '../components/Spinner.vue'
 
                 let prev = activeThumb.previousElementSibling
                 activeThumb.classList.remove('active')
-
-                prev.classList.add('active')
+                setTimeout(()=>{
+                    prev.classList.add('active')
+                    console.log('witdh is ', prev.scrollWidth)
+                }, 100)
                 slideImages.value.scrollBy(-prev.scrollWidth, 0)
                 // slideImages.value.scrollLeft -= prev.scrollWidth.
 
@@ -143,8 +192,10 @@ import Spinner from '../components/Spinner.vue'
 
                 let next = activeThumb.nextElementSibling
                 activeThumb.classList.remove('active')
-                
-                next.classList.add('active')
+                setTimeout(()=>{
+                    next.classList.add('active')
+                    console.log('witdh is ', next.scrollWidth)
+                }, 100)
                 // slideImages.value.scrollBy(+next.scrollWidth, 0)
                 slideImages.value.scrollLeft += next.scrollWidth
 
@@ -199,6 +250,7 @@ import Spinner from '../components/Spinner.vue'
         display: flex;
         gap: 0.7rem;
         overflow-x: auto;
+        /* overflow: hidden; */
         scroll-behavior: smooth;
         /* white-space: nowrap; */
         transition: all 1s linear;
@@ -209,20 +261,51 @@ import Spinner from '../components/Spinner.vue'
         display: none;
     }
 
-    img {
+    .thumb {
         width: 150px;
-        height: inherit;
-        object-fit: cover;
-        display: block;
+        height: 100%;
+        cursor: pointer;
+        background: #a19e9e;
         border-radius: 0.2rem;
         transition: all 0.9s linear;
-        cursor: pointer;
+        display: block;
+        position: relative;
     }
 
-   
+    .thumb.active {
+        background: linear-gradient(to right, #cfcece, #a9b1f8, #cfcece), linear-gradient(to top, yellow, white);
+        
+    }
     .thumb:hover {
-        width: 160px;
-        box-shadow: inset 10px 20px 5px #6772E5;
+        width: 155px;
+    }
+
+    .info {
+        display: none;
+        opacity: 0;
+        transition: all 1s ease-out;
+    }
+
+    .info .title {
+        font-size: 0.8rem;
+        color:#6672E5 ;
+        text-transform: uppercase;
+    }
+
+    .info .name {
+        font-size: 1.5rem;
+        color: black;
+        margin-top: 0.2rem;
+        font-weight: bold;
+    }
+
+    .active .info{
+        display: block;
+        opacity: 1;
+        position: absolute;
+        top: 1rem;
+        left: 2rem;
+        /* border: 1px solid red; */
     }
 
 

@@ -8,6 +8,13 @@ body {
     background: #eee;
 }
 
+img {
+  width: inherit;
+  height: 100%;
+  object-fit: cover;
+  /* display: block; */
+}
+
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
