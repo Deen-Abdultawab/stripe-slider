@@ -1,5 +1,7 @@
 # reaction-timer
 
+## Live Link
+[Click and view in desktop](https://stripe-slider.vercel.app).
 ## Project setup
 ```
 npm install
